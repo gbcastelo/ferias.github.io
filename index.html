@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Férias do Castelo ✈️</title>
+    <style>
+      body {
+        background-color: #87CEEB; /* Fundo azul */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+      img {
+        max-width: 300px;
+        height: auto;
+        margin-bottom: 20px;
+      }
+      .title,.text {
+        font-size: 23px;
+        color: #333;
+      }
+      #countdown {
+        font-size: 2rem;
+        color: #333;
+      }
+    </style>
+</head>
+<body>
+    <img src="https://cdn6.campograndenews.com.br/uploads/noticias/2020/03/14/3uau0xpgtx4wk.jpg" alt="Avião">
+    <div class="title">Faltam</div>
+    <div id="countdown">Carregando...</div>
+    <div class="text">Para as férias 😎</div>
+
+    <script>
+      function startCountdown() {
+          const targetDate = new Date('November 30, 2024 18:00:00').getTime();
+
+          function updateCountdown() {
+              const now = new Date().getTime();
+              const distance = targetDate - now;
+
+              if (distance >= 0) {
+                  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                  document.getElementById('countdown').innerHTML = `
+                      ${days}d ${hours}h ${minutes}m ${seconds}s
+                  `;
+              } else {
+                  document.getElementById('countdown').innerHTML = "Evento ocorreu!";
+              }
+          }
+
+          setInterval(updateCountdown, 1000);
+      }
+
+      startCountdown();
+    </script>
+</body>
+</html>
